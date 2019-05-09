@@ -1,0 +1,24 @@
+#-*-coding:utf-8-*-
+
+import requests
+from lxml import html
+
+
+class Page(object):
+	def __init__(self,url,headers):
+		self.url=url
+		self.headers=headers
+
+	def get_page(self):
+		r=requests.get(self.url,self.headers)
+		return r.text
+
+def main():
+	web='https://www.zhihu.com'
+	headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0'}
+	page=Page(web,headers)
+	w=page.get_page()
+	print(w)
+
+if __name__ =='__main__':
+	main()
